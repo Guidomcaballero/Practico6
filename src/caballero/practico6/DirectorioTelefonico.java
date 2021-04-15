@@ -19,7 +19,6 @@ import java.util.Set;
 public class DirectorioTelefonico {
     private Map<Long,Cliente> listaClientes = new HashMap<>(); 
     
-    
     public void agregarCliente(Long tel, Cliente c){
         this.listaClientes.put(tel, c);
     }
