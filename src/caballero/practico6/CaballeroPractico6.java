@@ -21,7 +21,7 @@ public class CaballeroPractico6 {
         Cliente c1 = new Cliente(40909217L,"Guido","Caballero","San Luis","Juana Koslay");
         Cliente c2 = new Cliente(31645696L,"Juan","Perez","Neuquen","Neuquen");
         Cliente c3 = new Cliente(22249012L,"Mauri","Velazquez","Merlo","Merlito");
-        Cliente c4 = new Cliente(26192283L,"Astor","Amigo","San Luis","La Punta");
+        Cliente c4 = new Cliente(26192283L,"Astor","Perez","San Luis","La Punta");
         Cliente c5 = new Cliente(64420420L,"Renzo","Gomez","Villa Mercedes","Calle Angosta");
         dir.agregarCliente(2664326822L, c1);
         dir.agregarCliente(2664326823L, c2);
@@ -30,8 +30,10 @@ public class CaballeroPractico6 {
         dir.agregarCliente(2664326826L, c5);
         
         System.out.println(dir.buscarClientes("San Luis").toString());
-        
-        
+        dir.eliminarCliente(40909217L);
+        System.out.println(dir.buscarClientes("San Luis").toString());
+        dir.agregarCliente(2664326822L, c1);
+        System.out.println(dir.buscarTelefono("Perez").toString());
     
     }
     

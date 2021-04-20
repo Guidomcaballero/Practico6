@@ -27,26 +27,42 @@ public class DirectorioTelefonico {
         return listaClientes.get(tel);
     }
     
-    public boolean buscarTelefono(String ap){
-        
-        return true;
+    public List buscarTelefono(String ap){
+        List<Long> listaTelefonos = new LinkedList<>(); 
+        Set<Long> keys = listaClientes.keySet();
+        for (Long aux : keys) {
+            Cliente cliente=listaClientes.get(aux);
+            if(cliente.getApellido().equals(ap)){
+                System.out.println(aux);
+                listaTelefonos.add(aux);
+            }
+        }
+        return listaTelefonos;
     }
     
     public List buscarClientes(String ciudad){
-        List<String> aux = new LinkedList<>(); 
+        List<String> listaEncontrados = new LinkedList<>(); 
+        Set<Long> keys = listaClientes.keySet();
+        for (Long aux : keys) {
+            Cliente cliente=listaClientes.get(aux);
+            if(cliente.getCiudad().equals(ciudad)){
+                String nombreCompleto = cliente.getNombre()+" "+cliente.getApellido();
+                listaEncontrados.add(nombreCompleto);
+            }
+        }
+        return listaEncontrados;
+    }
+    
+    public void eliminarCliente(long dni){ 
         Set<Long> keys = listaClientes.keySet();
         Iterator it = keys.iterator();
         while(it.hasNext()){
             Cliente cliente=listaClientes.get(it.next());
-            if(cliente.getCiudad().equals(ciudad)){
-                String nombreCompleto = cliente.getNombre()+" "+cliente.getApellido();
-                aux.add(nombreCompleto);
+            if(cliente.getDni()== dni){
+                it.remove();
+                System.out.println("ELIMINADO CORRECTAMENTE.");
+                break;
             }
         }
-        return aux;
-    }
-    
-    public void eliminarCliente(long dni){
-        
     }
 }
