@@ -7,7 +7,7 @@ package caballero.practico6;
 
 /**
  *
- * @author Usuario
+ * @author Guido Caballero
  */
 public class CaballeroPractico6 {
 

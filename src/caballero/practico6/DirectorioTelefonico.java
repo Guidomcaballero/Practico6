@@ -14,7 +14,7 @@ import java.util.Set;
 
 /**
  *
- * @author Usuario
+ * @author Guido Caballero
  */
 public class DirectorioTelefonico {
     private Map<Long,Cliente> listaClientes = new HashMap<>(); 
@@ -22,24 +22,21 @@ public class DirectorioTelefonico {
     public void agregarCliente(Long tel, Cliente c){
         this.listaClientes.put(tel, c);
     }
-    
     public Cliente buscarCliente(Long tel){
         return listaClientes.get(tel);
     }
-    
     public List buscarTelefono(String ap){
         List<Long> listaTelefonos = new LinkedList<>(); 
         Set<Long> keys = listaClientes.keySet();
-        for (Long aux : keys) {
-            Cliente cliente=listaClientes.get(aux);
+        for (Long key : keys) {
+            Cliente cliente=listaClientes.get(key);
             if(cliente.getApellido().equals(ap)){
-                System.out.println(aux);
-                listaTelefonos.add(aux);
+                System.out.println(key);
+                listaTelefonos.add(key);
             }
         }
         return listaTelefonos;
     }
-    
     public List buscarClientes(String ciudad){
         List<String> listaEncontrados = new LinkedList<>(); 
         Set<Long> keys = listaClientes.keySet();
@@ -52,17 +49,49 @@ public class DirectorioTelefonico {
         }
         return listaEncontrados;
     }
-    
-    public void eliminarCliente(long dni){ 
+    public Cliente eliminarCliente(long dni){ 
+        Cliente eliminado = new Cliente();
         Set<Long> keys = listaClientes.keySet();
         Iterator it = keys.iterator();
         while(it.hasNext()){
-            Cliente cliente=listaClientes.get(it.next());
-            if(cliente.getDni()== dni){
+            Cliente c = listaClientes.get(it.next());
+            if(c.getDni()== dni){
+                eliminado = c;
                 it.remove();
-                System.out.println("ELIMINADO CORRECTAMENTE.");
                 break;
             }
         }
+        return eliminado;
     }
+    
+    
+    public Cliente buscarDni(Long dni){ 
+        Set<Long> keys = listaClientes.keySet();
+        Long keyAux =0L;
+        for (Long aux : keys) {
+            Cliente cliente=listaClientes.get(aux);
+            if(cliente.getDni()== dni)
+                keyAux = aux;
+        }
+        return listaClientes.get(keyAux);
+    }
+    public Long buscaClave(Long dni){
+        Set<Long> keys = listaClientes.keySet();
+        Long keyAux =0L;
+        for (Long aux : keys) {
+            Cliente cliente=listaClientes.get(aux);
+            if(cliente.getDni()== dni)
+                keyAux = aux;
+        }
+        return keyAux;
+    }
+    
+    
+    public Map<Long, Cliente> getListaClientes() {
+        return listaClientes;
+    }
+    public void setListaClientes(Map<Long, Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+    
 }

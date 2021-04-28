@@ -7,7 +7,7 @@ package caballero.practico6;
 
 /**
  *
- * @author Usuario
+ * @author Guido Caballero
  */
 public class Cliente {
     private long dni;
@@ -22,6 +22,14 @@ public class Cliente {
         this.Apellido = Apellido;
         this.ciudad = ciudad;
         this.direccion = direccion;
+    }
+
+    Cliente() {
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "dni=" + dni + ", nombre=" + nombre + ", Apellido=" + Apellido + ", ciudad=" + ciudad + ", direccion=" + direccion + '}';
     }
 
     public long getDni() {
